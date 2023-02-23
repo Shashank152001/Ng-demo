@@ -12,17 +12,17 @@ export class AppComponent {
   // exceltoJson: any;
 
   show: boolean = false;
-  public tableNo:any=[];
+  public tableNo: any = [];
 
   public tableData: any;
   public tableTitle: any;
- 
-  public recordsPerPage = 10;
-  public tableRecords:any = [];
-  public data:any=[];
- 
 
-  public uploadData(e:any) {
+  public recordsPerPage = 10;
+  public tableRecords: any = [];
+  public data: any = [];
+
+
+  public uploadData(e: any) {
     console.log(e.target.files[0]);
     /* wire up file reader */
     const target: DataTransfer = <DataTransfer>(<unknown>e.target);
@@ -35,31 +35,31 @@ export class AppComponent {
       /* create workbook */
       const binarystr: string = e.target.result;
       const wb: XLSX.WorkBook = XLSX.read(binarystr, { type: 'binary' });
-      
+
 
       /* selected the first sheet */
-      const sheets=[]
-     for(let i=0;i<wb.SheetNames.length;i++){
-      sheets[i]=wb.SheetNames[i];
-     
-     console.log(sheets)
-      const wsname: string =sheets[i];
-      const ws: XLSX.WorkSheet = wb.Sheets[wsname];
+      const sheets = []
+      for (let i = 0; i < wb.SheetNames.length; i++) {
+        sheets[i] = wb.SheetNames[i];
 
-      /* save data */
-      
-      this.data.push(XLSX.utils.sheet_to_json(ws)); // to get 2d array pass 2nd parameter as object {header: 1}
-      console.log(this.data[i]); // Data will be logged in array format containing objects
-      
-      this.tableData = this.data[i];
-      this.tableTitle = Object.keys(this.tableData[i]);
-      this.tableRecords.push(this.tableData)
-      console.log(this.tableRecords)
-      this.tableNo=this.tableData
-      // this.tableNo.push(this.tableRecords)
-      // this.tableRecords.pop()
-     }
-    //  return this.tableRecords;
+        console.log(sheets)
+        const wsname: string = sheets[i];
+        const ws: XLSX.WorkSheet = wb.Sheets[wsname];
+
+        /* save data */
+
+        this.data.push(XLSX.utils.sheet_to_json(ws)); // to get 2d array pass 2nd parameter as object {header: 1}
+        console.log(this.data[i]); // Data will be logged in array format containing objects
+
+        this.tableData = this.data[i];
+        this.tableTitle = Object.keys(this.tableData[i]);
+        console.log("tabletitle", this.tableTitle);
+        this.tableRecords.push(this.tableData)
+        this.tableNo.push(this.tableData);
+        // this.tableNo.push(this.tableRecords)
+        // this.tableRecords.pop()
+      }
+      //  return this.tableRecords;
       // this.totalPageCount = this.tableData.length / this.recordsPerPage;
     };
   }
@@ -74,13 +74,14 @@ export class AppComponent {
   // }
   logData() {
     this.show = true;
-    for(let i=0;i<this.tableNo.length;i++){
-      this.tableTitle = Object.keys(this.tableData[i]);
-      this.tableRecords.push(this.tableData)
-      console.log(this.tableRecords)
-      this.tableNo=this.tableData
-    }
-    return this.tableNo
+    // for(let i=0;i<this.tableNo.length;i++){
+    //   this.tableTitle = Object.keys(this.tableData[i]);
+    //   this.tableRecords.push(this.tableData)
+    //   console.log(this.tableRecords)
+    //   this.tableNo.push(this.tableData);
+    //   console.log("Actual data",this.tableNo);
+    // }
+    // return this.tableNo
   }
 
 }

@@ -54,3 +54,17 @@
 //     margin-left: 25%;
 //     margin-top: 5%;
 // }
+
+table {
+  border: 1px solid #ddd;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+table th,
+td {
+  border: 1px solid black;
+  text-align: center;
+  border: 1px solid #ddd;
+  padding: 12px;
+}
