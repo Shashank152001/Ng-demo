@@ -1,0 +1,55 @@
+<div class="mb-2 input-div">
+  <input class="form-control" type="file" id="formFile" (change)="uploadData($event)">
+</div>
+<div class="btn-design">
+  <button type="button" class="btn btn-outline-dark" (click)="logData()">Import</button>
+</div>
+<!-- <div class="btn-design">
+  <button type="button" class="btn btn-outline-dark" (click)="logData()">Import</button>
+</div> -->
+
+<div *ngIf="show" class="parent-div">
+  <div class="child-div" style="overflow-x: auto;">
+    <!-- <table id="users">
+      <thead>
+        <tr>
+          <th *ngFor="let header of exceltoJson.headers.header1">{{header| titlecase}}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of exceltoJson.sheet1">
+          <td>{{data.athlete | titlecase}}</td>
+          <td>{{data.ProjectName}}</td>
+          <td>{{data.ProjectDescription}}</td>
+          <td>{{data.year}}</td>
+          <td>{{data.date}}</td>
+          <td>{{data.sport}}</td>
+          <td>{{data.gold}}</td>
+          <td>{{data.silver}}</td>
+          <td>{{data.bronze}}</td>
+          <td>{{data.total}}</td>
+        </tr>
+      </tbody>
+    </table> -->
+    
+    <p class="text-primary">Hello</p>
+    <table class="table table-hover">
+      <tr>
+        <th *ngFor="let header of tableTitle">{{ header }}</th>
+      </tr>
+      <tr *ngFor="let data of tableNo; let i = index">
+        <td *ngFor="let header of tableTitle">
+          {{ data[header] }}
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+<!-- <div *ngIf="totalPageCount">
+  Go To Page:
+  <select [(ngModel)]="currentPage" (change)="onPageChange()">
+    <option *ngFor="let page of [].constructor(totalPageCount); let i = index">
+      {{ i + 1 }}
+    </option>
+  </select>
+</div> -->
