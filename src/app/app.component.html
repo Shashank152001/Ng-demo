@@ -35,13 +35,13 @@
     <p class="text-primary">Hello</p>
     <table *ngFor="let data of tableNo;let i = index" class="table table-hover">
       <tr>
-        <th *ngFor="let data of tableTitle; let i = index;">{{data}}</th>
+        <th *ngFor="let data of tableTitle[i]; let i = index;">{{data}}</th>
       </tr>
       <!-- <tr>
         <th *ngFor="let header of tableTitle">{{ header }}</th>
       </tr> -->
       <tr *ngFor="let data of tableNo[i];">
-        <td *ngFor="let newData of tableTitle" >{{data[newData]}}</td>
+        <td *ngFor="let newData of tableTitle[i]" >{{data[newData]}}</td>
       </tr>
     </table>
   </div>

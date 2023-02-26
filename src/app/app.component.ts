@@ -15,7 +15,7 @@ export class AppComponent {
   public tableNo: any = [];
 
   public tableData: any;
-  public tableTitle: any;
+  public tableTitle: any =[];
 
   public recordsPerPage = 10;
   public tableRecords: any = [];
@@ -52,7 +52,7 @@ export class AppComponent {
         console.log(this.data[i]); // Data will be logged in array format containing objects
 
         this.tableData = this.data[i];
-        this.tableTitle = Object.keys(this.tableData[i]);
+        this.tableTitle.push(Object.keys(this.tableData[i]));
         console.log("tabletitle", this.tableTitle);
         this.tableRecords.push(this.tableData)
         this.tableNo.push(this.tableData);
