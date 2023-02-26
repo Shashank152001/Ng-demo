@@ -1,5 +1,7 @@
+
+
 <div class="mb-2 input-div">
-  <input class="form-control" type="file" id="formFile" (change)="uploadData($event)">
+  <input class="form-control" type="file" id="formFile" (change)="uploadData($event)" multiple accept=".csv,.xlsx">
 </div>
 <div class="btn-design">
   <button (click)="logData()" type="button" class="btn btn-outline-dark">Import</button>
@@ -46,6 +48,7 @@
     </table>
   </div>
 </div>
+
 <!-- <div *ngIf="totalPageCount">
   Go To Page:
   <select [(ngModel)]="currentPage" (change)="onPageChange()">
@@ -54,3 +57,6 @@
     </option>
   </select>
 </div> -->
+<a routerLink="/chart" routerLinkActive="router-link-active">Chart
+</a>
+<router-outlet></router-outlet>

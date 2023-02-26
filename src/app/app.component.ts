@@ -23,7 +23,8 @@ export class AppComponent {
 
 
   public uploadData(e: any) {
-    console.log(e.target.files[0]);
+    // console.log(e.target.files[0]);
+    for(const file of e.target['files'].files){
     /* wire up file reader */
     const target: DataTransfer = <DataTransfer>(<unknown>e.target);
     if (target.files.length !== 1) {
@@ -51,14 +52,15 @@ export class AppComponent {
         this.data.push(XLSX.utils.sheet_to_json(ws)); // to get 2d array pass 2nd parameter as object {header: 1}
         console.log(this.data[i]); // Data will be logged in array format containing objects
 
-        this.tableData = this.data[i];
-        this.tableTitle = Object.keys(this.tableData[i]);
+        this.tableData=this.data[i];
+        this.tableTitle=Object.keys(this.tableData[i]);
         console.log("tabletitle", this.tableTitle);
         this.tableRecords.push(this.tableData)
         this.tableNo.push(this.tableData);
         // this.tableNo.push(this.tableRecords)
         // this.tableRecords.pop()
       }
+    }
       //  return this.tableRecords;
       // this.totalPageCount = this.tableData.length / this.recordsPerPage;
     };
